@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(title='asigFix')"></head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" align="center" >
+				<div>
+					<img width="300" src="images/health4everyone.jpeg">&nbsp;&nbsp;&nbsp;<span style="font-size: 36px;vertical-align:bottom;" th:text="#{app.title}">PMA</span>
+				</div>
+					
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" align="center">&nbsp;
+			</div>
+		</div>
+		<div class="row" style="padding-bottom:10px;">
+			<div class="col-md-12" align="center">
+				<h3 th:text="#{app.authentication}">Login</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" align="center">
+				<div th:if="${#request.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
+         			Login Failed!!!<br />
+         			Reason :
+         			<span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+            		th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                	Static summary
+         			</span>
+            
+      			</div>
+      		</div>
+		</div>
+      	<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+		<div class="row" style="padding-bottom:10px;">
+			<div class="col-md-4" align="center"></div>
+			<div class="col-md-2" align="left">
+				User:
+			</div>
+			<div class="col-md-2" align="left">
+				<input type='text' name='username' value=''>
+			</div>
+			<div class="col-md-4" align="center"></div>
+		</div>
+		<div class="row" style="padding-bottom:10px;">
+			<div class="col-md-4" align="center"></div>
+			<div class="col-md-2" align="left">
+				Password:
+			</div>
+			<div class="col-md-2" align="left">
+				<input type='password' name='password' />
+			</div>
+			<div class="col-md-4" align="center"></div>
+		</div>
+		<div class="row" style="padding-bottom:10px;">
+			<div class="col-md-4" align="center"></div>
+			<div class="col-md-2" align="left">
+				Remember Me?
+			</div>
+			<div class="col-md-2" align="left">
+				<input type="checkbox" name="remember-me" />
+			</div>
+			<div class="col-md-4" align="center"></div>
+		</div>
+		<div class="row" style="padding-bottom:10px;">
+			<div class="col-md-12" align="center">
+               <input name="submit" type="submit" value="submit" />
+			</div>
+		</div>
+      	</form>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+
+
+    
+</html>

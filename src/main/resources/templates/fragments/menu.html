@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left-side-menu" th:fragment="menu">
+                <!-- LOGO -->
+                <a href="index.html" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="assets/images/health4everyone20.png" alt="" height="50">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="assets/images/health4everyone20.png" alt="" height="50">
+                    </span>
+                </a>
+
+                <!-- LOGO -->
+                <a href="index.html" class="logo text-center logo-dark">
+                    <span class="logo-lg">
+                        <img src="assets/images/health4everyone20.png" alt="" height="50">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="assets/images/health4everyone20.png" alt="" height="50">
+                    </span>
+                </a>
+    
+                <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+                    <!--- Sidemenu -->
+                    <ul class="metismenu side-nav">
+
+                        <li class="side-nav-title side-nav-item">Navigation</li>
+
+                        <li class="side-nav-item">
+                            <a href="dashboard" class="side-nav-link">
+                                <i class="uil-home-alt"></i>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="users" class="side-nav-link">
+                                <i class="uil-users-alt"></i>
+                                <span> Users </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="devices" class="side-nav-link">
+                                <i class="uil-processor"></i>
+                                <span> Devices </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="scripts/" class="side-nav-link">
+                                <i class="uil-receipt"></i>
+                                <span> Scripts </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="patients/" class="side-nav-link">
+                                <i class="uil-book-medical"></i>
+                                <span> Patient lists </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="tasks/" class="side-nav-link">
+                                <i class="uil-clipboard-alt"></i>
+                                <span> Tasks </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="notifications/" class="side-nav-link">
+                                <i class="uil-message"></i>
+                                <span> Notifications </span>
+                            </a>
+                        </li>
+                                    
+                    </ul>
+
+                    <!-- End Sidebar -->
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->

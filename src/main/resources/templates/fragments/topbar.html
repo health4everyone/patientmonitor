@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+                    <div class="navbar-custom" th:fragment="topbar">
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                            <li class="dropdown notification-list topbar-dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets/images/flags/us.jpg" alt="user-image" class="mr-0 mr-sm-1" height="12"> 
+                                    <span class="align-middle d-none d-sm-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu">
+
+                                    <!-- item-->
+                                    <a href="dashboard?lang=ro" class="dropdown-item notify-item">
+                                        <img src="assets/images/flags/romania.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Romanian</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+
+                            <li class="notification-list">
+                                <a class="nav-link right-bar-toggle" href="javascript: void(0);">
+                                    <i class="dripicons-gear noti-icon"></i>
+                                </a>
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                    aria-expanded="false">
+                                    <span>
+                                        <span class="account-user-name" th:utext="${userFullName}"></span>
+                                        <span class="account-user-name" th:utext="${userEmail}"></span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                    <!-- item-->
+                                    <div class=" dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item right-bar-toggle notify-item">
+                                        <i class="mdi dripicons-gear mr-1"></i>
+                                        <span>Settings</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="logout" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-logout mr-1"></i>
+                                        <span>Logout</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                        <button class="button-menu-mobile open-left disable-btn">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                       
+                    </div>

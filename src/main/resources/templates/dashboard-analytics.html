@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Dashboard | health4everyone.org</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- third party css -->
+        <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+
+        <!-- App css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+
+    </head>
+
+
+    <body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+        <!-- Begin page -->
+        <div class="wrapper">
+        	<div th:replace="fragments/menu.html" :: menu></div>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Topbar Start -->
+                    <div th:replace="fragments/topbar.html" :: topbar></div>
+                    <!-- end Topbar -->
+                    
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">Admin</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-processor float-right'></i>
+                                        <h6 class="text-uppercase mt-0">Values received</h6>
+                                        <h2 class="my-2" id="total-values-count">0</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success mr-2" id="daily-values-percent"><span class="mdi mdi-arrow-up-bold"></span> 0.00%</span>
+                                            <span class="text-nowrap">Since yesterday</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                                <!--end card-->
+
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-window-restore float-right'></i>
+                                        <h6 class="text-uppercase mt-0">Total users</h6>
+                                        <h2 class="my-2" id="total-users-count">0</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success mr-2"  id="daily-users-percent"><span class="mdi mdi-arrow-up-bold"></span> 0.00%</span>
+                                            <span class="text-nowrap">Since yesterday</span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                                <!--end card-->
+
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-window-restore float-right'></i>
+                                        <h6 class="text-uppercase mt-0">Total devices</h6>
+                                        <h2 class="my-2" id="total-devices-count">0</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success mr-2" id="daily-devices-percent"><span class="mdi mdi-arrow-up-bold"></span> 0.00%</span>
+                                            <span class="text-nowrap">Since yesterday</span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div> <!-- end col -->
+
+                            <div class="col-xl-9 col-lg-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="alert alert-warning alert-dismissible fade show mb-3" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            You are not receiving any values for more than 10 minutes. Either your site is not receiving any requests or it is not wired correctly.
+                                        </div>
+                                        <ul class="nav float-right d-none d-lg-flex">
+                                            <li class="nav-item">
+                                                <a class="nav-link text-muted" href="#">Today</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-muted" href="#">7d</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#">15d</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-muted" href="#">1m</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-muted" href="#">1y</a>
+                                            </li>
+                                        </ul>
+                                        <h4 class="header-title mb-3">Values received overview</h4>
+                                        <div id="values-received-overview" class="apex-charts mt-3" data-colors="#0acf97"></div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- container -->
+
+                </div>
+                <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © health4everyone.org
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+
+            <div class="rightbar-title">
+                <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                    <i class="dripicons-cross noti-icon"></i>
+                </a>
+                <h5 class="m-0">Settings</h5>
+            </div>
+
+            <div class="rightbar-content h-100" data-simplebar>
+
+                <div class="p-3">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                    </div>
+
+                    <!-- Settings -->
+                    <h5 class="mt-3">Color Scheme</h5>
+                    <hr class="mt-1" />
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
+                            id="light-mode-check" checked />
+                        <label class="custom-control-label" for="light-mode-check">Light Mode</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="dark"
+                            id="dark-mode-check" />
+                        <label class="custom-control-label" for="dark-mode-check">Dark Mode</label>
+                    </div>
+
+                    <!-- Width -->
+                    <h5 class="mt-4">Width</h5>
+                    <hr class="mt-1" />
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                        <label class="custom-control-label" for="fluid-check">Fluid</label>
+                    </div>
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
+                        <label class="custom-control-label" for="boxed-check">Boxed</label>
+                    </div>
+
+                    <!-- Left Sidebar-->
+                    <h5 class="mt-4">Left Sidebar</h5>
+                    <hr class="mt-1" />
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="theme" value="default" id="default-check"
+                            checked />
+                        <label class="custom-control-label" for="default-check">Default</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="theme" value="light" id="light-check" />
+                        <label class="custom-control-label" for="light-check">Light</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="radio" class="custom-control-input" name="theme" value="dark" id="dark-check" />
+                        <label class="custom-control-label" for="dark-check">Dark</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="compact" value="fixed" id="fixed-check"
+                            checked />
+                        <label class="custom-control-label" for="fixed-check">Fixed</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="compact" value="condensed"
+                            id="condensed-check" />
+                        <label class="custom-control-label" for="condensed-check">Condensed</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="compact" value="scrollable"
+                            id="scrollable-check" />
+                        <label class="custom-control-label" for="scrollable-check">Scrollable</label>
+                    </div>
+
+                    <button class="btn btn-primary btn-block mt-4" id="resetBtn">Reset to Default</button>
+
+                </div> <!-- end padding-->
+
+            </div>
+        </div>
+
+        <div class="rightbar-overlay"></div>
+        <!-- /Right-bar -->
+
+        <!-- bundle -->
+        <script src="assets/js/vendor.min.js"></script>
+        <script src="assets/js/app.min.js"></script>
+
+        <!-- third party js -->
+        <!-- <script src="assets/js/vendor/Chart.bundle.min.js"></script> -->
+        <script src="assets/js/vendor/apexcharts.min.js"></script>
+        <script src="assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- third party js ends -->
+
+        <!-- app js-->
+        <script src="assets/js/pages/dashboard-analytics.js"></script>
+        <!-- end app js-->
+    </body>
+
+</html>
